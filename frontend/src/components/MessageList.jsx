@@ -5,7 +5,7 @@ function MessageList() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('http://localhost:3000/admin')
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/admin`)
       .then(response => response.json())
       .then(data => {
         setMessages(data.messages); // Access the messages key
@@ -14,7 +14,7 @@ function MessageList() {
       .catch(error => {
         console.error('Error fetching messages:', error);
       });
-  }, []);
+  }, [messages]);
 
   const handleDelete = async (id) => {
     try {
